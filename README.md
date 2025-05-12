@@ -1,78 +1,148 @@
-# Image Processing Application
+# Image Enhancement Tool
 
-This is a command-line application for performing various image processing operations on an input image. The application allows users to load an image, apply transformations such as gamma correction, histogram equalization, brightness adjustment, and more, and then save the modified image.
+## Overview
+A powerful Python-based image enhancement tool that provides various image processing capabilities including gamma correction, histogram equalization, brightness/contrast adjustment, and more. This tool is designed to help users enhance and modify their images through an interactive command-line interface.
 
 ## Features
+- **Gamma Correction**: Adjust image gamma for better exposure
+- **Histogram Equalization**: Improve image contrast automatically
+- **Brightness Adjustment**: Modify image brightness levels
+- **Contrast Adjustment**: Enhance image contrast
+- **Sharpness Control**: Adjust image sharpness
+- **Saturation Control**: Modify color saturation
+- **Exposure Adjustment**: Fine-tune image exposure
+- **Real-time Preview**: View changes immediately
+- **High-quality Saving**: Save images in JPEG or PNG format with optimized settings
 
-- Load an image from a specified path.
-- Apply the following operations:
-  - Gamma Correction
-  - Histogram Equalization
-  - Adjust Brightness
-  - Adjust Contrast
-  - Adjust Sharpness
-  - Adjust Saturation
-  - Adjust Exposure
-- Display the current image.
-- Save the modified image with minimal compression artifacts.
-
-## Requirements
-
-- Python 3.x
-- OpenCV (`cv2`)
-- NumPy
-- Pillow (`PIL`)
-- scikit-image (`skimage`)
+## System Requirements
+- Python 3.6 or higher
+- Required Python packages (automatically installed via requirements.txt):
+  - opencv-python >= 4.5.0
+  - numpy >= 1.19.0
+  - Pillow >= 8.0.0
+  - scikit-image >= 0.18.0
 
 ## Installation
-
-1. Ensure you have Python 3.x installed on your system.
-2. Install the required libraries using pip:
-
+1. Clone or download this repository
+2. Navigate to the project directory
+3. Install dependencies:
 ```bash
-pip install opencv-python numpy pillow scikit-image
+pip install -r requirements.txt
 ```
 
 ## Usage
-
-1. Run the script:
-
+1. Run the program:
 ```bash
-python image_processing.py
+python MainCode.py
 ```
 
-2. When prompted, enter the path to the image you want to process.
-3. Use the menu to select an operation:
-   - Enter the number corresponding to the operation you want to apply.
-   - For operations that require parameters, you will be prompted to enter the values. If you press Enter without typing a value, the default will be used.
-   - Choose option 8 to display the current image.
-   - Choose option 9 to save the modified image. You will be asked to provide a filename (e.g., `result.jpg` or `result.png`).
-   - Choose option 0 to exit the application.
+2. When prompted, enter the path to your image file
 
-## Operations
+3. Use the interactive menu to apply various enhancements:
+   - 1: Gamma correction
+   - 2: Histogram Equalization
+   - 3: Brightness adjustment
+   - 4: Contrast adjustment
+   - 5: Sharpness adjustment
+   - 6: Saturation adjustment
+   - 7: Exposure adjustment
+   - 8: Show current image
+   - 9: Save the image
+   - 0: Exit
 
-- **Gamma Correction**: Adjusts the gamma value of the image. A gamma value less than 1 makes the image brighter, while a value greater than 1 makes it darker.
-- **Histogram Equalization**: Enhances the contrast of the image by equalizing the histogram of the luminance channel.
-- **Adjust Brightness**: Increases or decreases the brightness of the image.
-- **Adjust Contrast**: Increases or decreases the contrast of the image.
-- **Adjust Sharpness**: Sharpens or blurs the image.
-- **Adjust Saturation**: Increases or decreases the color saturation of the image.
-- **Adjust Exposure**: Adjusts the exposure of the image using logarithmic mapping.
+## Image Processing Functions
 
-## Saving Images
+### Gamma Correction
+- Adjusts the gamma value of the image
+- Values < 1 make the image brighter
+- Values > 1 make the image darker
+- Default value: 1.0
 
-When saving the image, the application attempts to minimize compression artifacts:
-- For JPEG images, it uses high quality (default 95), optimizes the image, and disables subsampling.
-- For PNG images, it uses a low compression level to preserve quality.
+### Histogram Equalization
+- Automatically improves image contrast
+- Works in YCrCb color space
+- Preserves color information while enhancing details
 
-## Notes
-- The image must be in a supported format like JPG, PNG, or BMP.
-- All transformations are cumulative — each operation applies on top of the previous one.
-- It's recommended to keep a backup of the original image before saving.
-- When adjusting brightness, contrast, etc., values around 1.0 mean no change.
-- Histogram Equalization works best with grayscale or low-contrast images.
+### Brightness Adjustment
+- Modifies image brightness
+- Factor > 1 increases brightness
+- Factor < 1 decreases brightness
+- Default value: 1.0
 
+### Contrast Adjustment
+- Enhances image contrast
+- Factor > 1 increases contrast
+- Factor < 1 decreases contrast
+- Default value: 1.0
 
-- The application converts the image to RGB format upon loading.
-- All operations are applied to a copy of the original image, so the original remains unchanged unless saved.
-- If you try to save without making any modifications, you will be notified that there are no changes to save.
+### Sharpness Adjustment
+- Controls image sharpness
+- Factor > 1 increases sharpness
+- Factor < 1 decreases sharpness
+- Default value: 1.0
+
+### Saturation Adjustment
+- Modifies color saturation
+- Factor > 1 increases saturation
+- Factor < 1 decreases saturation
+- Default value: 1.0
+
+### Exposure Adjustment
+- Adjusts image exposure using logarithmic correction
+- Gain > 1 increases exposure
+- Gain < 1 decreases exposure
+- Default value: 1.0
+
+## Technical Details
+
+### Image Processing Pipeline
+1. Image Loading
+   - Supports various image formats
+   - Converts to RGB color space
+   - Handles errors gracefully
+
+2. Processing
+   - Uses numpy arrays for efficient computation
+   - Implements various image enhancement algorithms
+   - Maintains image quality during processing
+
+3. Image Saving
+   - Optimized JPEG encoding
+   - Minimal PNG compression
+   - Quality preservation
+
+## Dependencies and References
+- OpenCV (cv2): For color space conversion and histogram equalization
+- NumPy: For efficient array operations
+- Pillow (PIL): For image loading, saving, and basic enhancements
+- scikit-image: For advanced image processing operations
+
+## Error Handling
+The program includes comprehensive error handling for:
+- Invalid file paths
+- Unsupported image formats
+- Processing errors
+- Invalid user input
+
+## Best Practices
+1. Always work with a copy of your original image
+2. Save your work frequently
+3. Preview changes before saving
+4. Use appropriate enhancement values for your specific image
+
+## Contributing
+Feel free to contribute to this project by:
+1. Forking the repository
+2. Creating a feature branch
+3. Submitting a pull request
+
+## License
+This project is open source and available under the MIT License.
+
+## Author
+[Your Name/Organization]
+
+## Acknowledgments
+- OpenCV community for image processing algorithms
+- Python Imaging Library (PIL) team
+- scikit-image contributors
