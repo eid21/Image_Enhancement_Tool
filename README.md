@@ -66,7 +66,6 @@ When saving the image, the application attempts to minimize compression artifact
 - For PNG images, it uses a low compression level to preserve quality.
 
 ## Notes
-
 - The image must be in a supported format like JPG, PNG, or BMP.
 - All transformations are cumulative — each operation applies on top of the previous one.
 - It's recommended to keep a backup of the original image before saving.
